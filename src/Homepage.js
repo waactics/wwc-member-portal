@@ -246,7 +246,7 @@ const Homepage = () => {
                     </div>
                     <div className="footer__links">
                         <a href="#header">Home</a>
-                        <a href="#values">Values</a>
+                        <a href="#values">What We Offer</a>
                         <a href="#team">Team</a>
                         <a href="#partners">Partners</a>
                     </div>

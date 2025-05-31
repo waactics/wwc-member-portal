@@ -181,27 +181,30 @@ const RegularEventsPage = () => {
         const now = new Date();
         const eventDate = new Date(event.date);
         
+        // Add 1 day to the event date (to make it the next day)
+        eventDate.setDate(eventDate.getDate() + 1)
+        
         //convert to CST
         const nowCST = toZonedTime(now, 'America/Chicago');
         const eventDateCST = toZonedTime(eventDate, 'America/Chicago');
 
         //TEMPORARILY TESTING: set check-in period end time (10:00PM CST)
         const checkInEnd = new Date(eventDateCST);
-        checkInEnd.setHours(22, 0, 0, 0); //10:00PM CST
+        checkInEnd.setHours(20, 0, 0, 0); //10:00PM CST
 
         // DEBUG: Critical time values
-    console.log('TIME DEBUG:', {
-        currentTime: nowCST.toString(),
-        eventDate: eventDateCST.toString(),
-        checkInEnd: checkInEnd.toString(),
-        isSameDay: (
-            eventDateCST.getDate() === nowCST.getDate() &&
-            eventDateCST.getMonth() === nowCST.getMonth() &&
-            eventDateCST.getFullYear() === nowCST.getFullYear()
-        ),
-        isFuture: nowCST < eventDateCST,
-        isPast: nowCST > checkInEnd
-    });
+        console.log('TIME DEBUG:', {
+            currentTime: nowCST.toString(),
+            eventDate: eventDateCST.toString(),
+            checkInEnd: checkInEnd.toString(),
+            isSameDay: (
+                eventDateCST.getDate() === nowCST.getDate() &&
+                eventDateCST.getMonth() === nowCST.getMonth() &&
+                eventDateCST.getFullYear() === nowCST.getFullYear()
+            ),
+            isFuture: nowCST < eventDateCST,
+            isPast: nowCST > checkInEnd
+        });
         
         //check if event is in the past (after 8:00PM CST on event day)
         if (nowCST > checkInEnd) {
@@ -217,9 +220,9 @@ const RegularEventsPage = () => {
         //check if current time is between 6:45PM and 8:00PM CST on event day
         // Check if current time is between 6:45PM and 8:00PM CST on event day
         const isCheckInPeriod = isEventToday && (
-            (nowCST.getHours() === 18 && nowCST.getMinutes() >= 45) || // 6:45 PM - 6:59PM
-            (nowCST.getHours() >= 19 && nowCST.getHours() <= 21) ||    // 7:00-9:59pm
-            (nowCST.getHours() === 22 && nowCST.getMinutes() === 0)    // 10:00 PM exactly
+            (nowCST.getHours() === 17 && nowCST.getMinutes() >= 0) ||  // 5:00 PM - 5:59 PM
+            (nowCST.getHours() >= 18 && nowCST.getHours() <= 19) ||    // 6:00 PM - 7:59 PM
+            (nowCST.getHours() === 20 && nowCST.getMinutes() === 0)    // 8:00 PM exactly
         );
 
         // ====== 1. during check-in period (ONLY show check-In) ======
@@ -416,7 +419,7 @@ const RegularEventsPage = () => {
             <div key={event._id} className="event-container">
                 <h1 className="event-title">Event: {event.title}</h1>
                 <p><strong>Description:</strong> {event.description}</p>
-                <p><strong>Date:</strong> {`${String(new Date(event.date).getUTCMonth()).padStart(2, '0')}/${String(new Date(event.date).getUTCDate()).padStart(2, '0')}/${new Date(event.date).getUTCFullYear()}`}</p>
+                <p><strong>Date:</strong> {`${String(new Date(event.date).getUTCMonth()+1).padStart(2, '0')}/${String(new Date(event.date).getUTCDate()).padStart(2, '0')}/${new Date(event.date).getUTCFullYear()}`}</p>
                 <p><strong>Location:</strong> {event.location}</p>
                 
                 {getEventButtons(event, user, navigate, rsvpStatus, handleCheckboxChange)}
