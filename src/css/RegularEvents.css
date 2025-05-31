@@ -39,6 +39,17 @@
     border-bottom: 2px solid #6c497c;
     padding-bottom: 8px;
   }
+
+  .event-passed-message {
+    color: #c93232;
+    font-size: 0.9rem;
+    background-color: #f3c0c0; /* Light red background */
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 4px solid #c93232;
+    margin: 10px 0;
+    display: inline-block;
+  }
   
   /* ===== FORM ELEMENTS ===== */
   .event-label {
