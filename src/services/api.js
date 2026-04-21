@@ -1,5 +1,9 @@
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
+// check what URL is being used
+console.log('🔍 API_BASE_URL is:', API_BASE_URL);
+console.log('🔍 REACT_APP_API_BASE_URL env var:', process.env.REACT_APP_API_BASE_URL);
+
 export const API_ENDPOINTS = {
   // Auth Endpoints
   AUTH: {
