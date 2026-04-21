@@ -38,6 +38,23 @@ app.use('/api/officers', officersRouter);
 //CORS
 const corsOptions = {
   origin: [
+    'https://wwc-member-portal.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:3001'
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], // Add OPTIONS explicitly
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'] // Add Authorization header
+};
+
+app.use(cors(corsOptions));
+
+// Explicitly handle preflight requests for all routes
+app.options('*', cors(corsOptions));
+
+/*const corsOptions = {
+  origin: [
     'https://wwc-member-portal.vercel.app', // Vercel frontend
     'http://localhost:3000', // local development
     'http://localhost:3001' // optional: other local ports
@@ -47,13 +64,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-/* app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-})); */
-
+*/
 
 /*  ==========================================  */
 /*  =============  UPLOAD SETUP  =============  */

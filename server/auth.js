@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 app.use(cors());
 
-/* testing: google id + mondodb id */
+/* google id + mondodb id */
 app.post('/auth/google', async (req, res) => {
     //set CORS headers
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');

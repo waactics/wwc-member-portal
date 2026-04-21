@@ -46,6 +46,7 @@ export const API_ENDPOINTS = {
   OFFICERS: {
     BASE: `${API_BASE_URL}/api/officers`,
     BY_ID: (id) => `${API_BASE_URL}/api/officers/${id}`,
+    UPLOADS: (id) => `${API_BASE_URL}/api/officers/uploads/${id}`,
   },
 
   // Information/Content Endpoints

@@ -1,5 +1,5 @@
 /* ============================================================================
-   GLOBAL.CSS — STYLING GUIDE FOR DESIGNERS
+   INDEX.CSS — STYLING GUIDE FOR DESIGNERS
    ----------------------------------------------------------------------------
    this file contains default global styles applied across the entire website
 
@@ -8,7 +8,7 @@
    - tweak smoothing/anti-aliasing or reset properties
    - add additional global resets or overrides if necessary
 
-   🚫 but pls DO NOT:
+   🚫 but pls do NOT:
    - remove font-smoothing props unless u test across browsers first
    - mess with margins/paddings unless u understand global effects
 

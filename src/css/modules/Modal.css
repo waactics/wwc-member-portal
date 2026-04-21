@@ -1,0 +1,132 @@
+/* ============================================================================
+   MODAL.CSS — STYLING GUIDE FOR DESIGNERS
+   ----------------------------------------------------------------------------
+   this stylesheet controls the layout and visual presentation of:
+   the Calendar Modal pop-up
+
+   ✅ u can totally:
+   - change modal background colors
+   - adjust shadows, rounded corners, and animations
+   - modify button styles (except Google blue #4285f4)
+   - edit typography and text spacing
+   - add hover/active states for buttons
+
+   🚫 but pls do NOT:
+   - remove the fixed positioning or z-index
+   - change the modal's flex container structure
+   - alter the Google-branded blue button color
+   - modify the 480px mobile breakpoint
+
+   contact me before making structural changes pls <3 ;p
+   thx for making it pretty guys 🥹💖
+============================================================================ */
+
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+  position: fixed;           /* 🚫 -> must cover entire viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #6c497c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;            /* 🚫 -> must sit above all content */
+}
+
+/* ===== MODAL CONTENT - SQUARE FORMAT ===== */
+.modal-content {
+  background-color: #6c497c;
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 380px;
+  min-height: 380px;        /* 🚫 -> maintain square proportions */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ===== TEXT STYLES ===== */
+.modal-content h2 {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;       /* 🚫 -> relative to button text */
+}
+
+.modal-content p {
+  color: #ffffff; /* slightly lighter text color */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* ===== BUTTON CONTAINER ===== */
+.modal-content .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* space between buttons */
+}
+
+/* ===== BUTTON STYLES ===== */
+.modal-button {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-button-primary {
+  background-color: #4285f4; /* 🚫 -> Google brand color */
+  color: white;
+}
+
+.modal-button-primary:hover {
+  background-color: #3367d6;
+  transform: translateY(-1px);
+}
+
+.modal-button-secondary {
+  background-color: #f1f3f4; /* light gray */
+  color: #3c4043;
+}
+
+.modal-button-secondary:hover {
+  background-color: #dadce0;
+  transform: translateY(-1px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 480px) {  /* 🚫 -> breakpoint locked */
+  .modal-content {
+    width: 90%;             /* 🚫 -> needs side margins */
+    min-height: 340px;
+    padding: 1.8rem;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-button {
+    padding: 0.7rem 1.5rem;
+  }
+}

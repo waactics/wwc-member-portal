@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { toZonedTime } from 'date-fns-tz';
 import PropTypes from 'prop-types';
-
 import Modal from './Modal';
 
 
